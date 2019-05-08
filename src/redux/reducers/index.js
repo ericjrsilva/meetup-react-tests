@@ -23,6 +23,12 @@ export default combineReducers({
                     ...state,
                     isShowModalCadastro: false
                 }
+            case 'SAVE':
+                return {
+                    ...state,
+                    produtos: state.produtos.concat(action.payload),
+                    isShowModalCadastro: false
+                }
             default:
                 return state;
         }

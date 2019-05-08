@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { getProdutos, showModalCadastro } from '../../redux/actions'
+import { getProdutos, showModalCadastro, hideModalCadastro, save } from '../../redux/actions'
 import { connect } from 'react-redux'
 import { Button, Form, Table } from 'react-bootstrap';
 import { Formik } from 'formik';
+import ModalForm from '../form'
 
 class App extends Component {
   render() {
@@ -43,6 +44,11 @@ class App extends Component {
             )}
           </tbody>
         </Table>
+        <ModalForm
+          isShow={this.props.isShowModalCadastro}
+          onHide={this.props.hideModalCadastro}
+          save={this.props.save}
+        />
       </>
     )
   }
@@ -53,7 +59,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  produtos: state.produtos.produtos
+  produtos: state.produtos.produtos,
+  isShowModalCadastro: state.produtos.isShowModalCadastro
 });
 
-export default connect(mapStateToProps,{getProdutos, showModalCadastro})(App);
+export default connect(mapStateToProps,{getProdutos, showModalCadastro, hideModalCadastro, save})(App);
