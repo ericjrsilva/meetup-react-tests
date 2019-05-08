@@ -32,6 +32,8 @@ class App extends Component {
               <th>Produto</th>
               <th>Quantidade</th>
               <th>Preço</th>
+              <th>Editar</th>
+              <th>Excluir</th>
             </tr>
           </thead>
           <tbody>
@@ -40,6 +42,8 @@ class App extends Component {
                 <td>{prod.produto}</td>
                 <td>{prod.quantidade}</td>
                 <td>{prod.preco}</td>
+                <td></td>
+                <td></td>
               </tr>
             )}
           </tbody>

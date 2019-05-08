@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
-import Yup from 'yup'
+import * as Yup from 'yup'
 import { Formik, ErrorMessage } from 'formik';
 import { Button, Form } from 'react-bootstrap';
 
-// const ValidarCadastroProduto = Yup.object().shape({
-// });
+const ValidarCadastroProduto = Yup.object().shape({
+    produto: Yup.string().trim()
+        .max(10, 'O campo deve ter no máximo 10 caracteres')
+        .required('Campo obrigatório'),
+    quantidade: Yup.string().trim()
+        .required('Campo obrigatório'),
+    preco: Yup.string().trim()
+        .required('Campo obrigatório')
+});
 
 const alertForm = (erro) => (
     <div style={{height:'20%'}}>
@@ -29,7 +36,7 @@ export default class ModalForm extends Component {
                 <Modal.Body>
                     <Formik
                         onSubmit={handleSubmit}
-                        // validationSchema={ValidarCadastroProduto}
+                        validationSchema={ValidarCadastroProduto}
                         initialValues={{
                             produto: this.props.produto ? this.props.produto.produto : '',
                             quantidade: this.props.produto ? this.props.produto.quantidade : '',
@@ -51,7 +58,7 @@ export default class ModalForm extends Component {
                                             onChange={handleChange}
                                             placeholder='Produto...'
                                         />
-                                        <ErrorMessage component="span" name="endereco">{(msg) => alertForm(msg)}</ErrorMessage>
+                                        <ErrorMessage component="span" name="produto">{(msg) => alertForm(msg)}</ErrorMessage>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Control
@@ -61,7 +68,7 @@ export default class ModalForm extends Component {
                                             onChange={handleChange}
                                             placeholder='Quantidade...'
                                         />
-                                        <ErrorMessage component="span" name="endereco">{(msg) => alertForm(msg)}</ErrorMessage>
+                                        <ErrorMessage component="span" name="quantidade">{(msg) => alertForm(msg)}</ErrorMessage>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Control
@@ -71,7 +78,7 @@ export default class ModalForm extends Component {
                                             onChange={handleChange}
                                             placeholder='Preço...'
                                         />
-                                        <ErrorMessage component="span" name="endereco">{(msg) => alertForm(msg)}</ErrorMessage>
+                                        <ErrorMessage component="span" name="preco">{(msg) => alertForm(msg)}</ErrorMessage>
                                     </Form.Group>
                                     <Form.Group >
                                         <Button type='submit'>Salvar</Button>
