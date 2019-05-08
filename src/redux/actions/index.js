@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 export const getProdutos = () => dispatch => {
-
     axios({
         method: 'GET',
-        url: ''
+        url: 'https://api.myjson.com/bins/12hycq'
     })
     .then(response =>
         dispatch({
@@ -23,3 +22,15 @@ export const getProdutos = () => dispatch => {
         console.log(errorMessage.message)
     })
 };
+
+export const showModalCadastro = () => dispatch => {
+    dispatch({
+        type: 'SHOW_MODAL_CADASTRO'
+    })
+}
+
+export const hideModalCadastro = () => dispatch => {
+    dispatch({
+        type: 'HIDE_MODAL_CADASTRO'
+    })
+}
