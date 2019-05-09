@@ -1,35 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from '../main';
+import { App } from '../components/app/index';
+import { shallow } from 'enzyme'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Main />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+// it('renders without crashing', () => {
+//   const div = document.createElement('div');
+//   ReactDOM.render(<Main />, div);
+//   ReactDOM.unmountComponentAtNode(div);
+// });
 
-// const setUp = (props={}) => {
-//   return shallow(<App {...props} />);
-// }
+const setUp = (props={}) => {
+  return shallow(<App {...props} />);
+}
 
-// describe('App', () => {
-//   let wrapper;
+describe('App', () => {
+  let wrapper;
+  let props;
 
-//   beforeEach(() => {
-//     props = {
-//         produtos: {},
-//         isShowModalCadastro: false,
-//         produto: null,
-//         index: null
-//     }
+  beforeEach(() => {
+    props = {
+        produtos: [],
+        isShowModalCadastro: false,
+        produto: null,
+        index: null
+    }
 
-//     wrapper = setUp(props)
-//   })
+    wrapper = setUp(props)
+  })
 
-//   it('should render', () => {
-//     expect(wrapper.length).toEqual(1);
-//     expect(wrapper.find('Formik')).toBeDefined()
-//     expect(wrapper.find('Table')).toBeDefined()
-//   })
-// })
+  it('should render', () => {
+    console.log(wrapper)
+    expect(wrapper.length).toEqual(1);
+  })
+})
 
