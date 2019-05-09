@@ -30,7 +30,6 @@ describe('App', () => {
   })
 
   it('should render', () => {
-    console.log(wrapper)
     expect(wrapper.length).toEqual(1);
   })
 })

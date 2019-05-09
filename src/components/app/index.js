@@ -11,7 +11,6 @@ export class App extends Component {
   render() {
     return(
       <div style={{margin: '20px'}}>
-      {console.log('teste')}
         <Formik onSubmit={this.props.getProdutos} >
           {({
             handleSubmit,
