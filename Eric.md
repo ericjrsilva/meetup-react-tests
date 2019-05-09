@@ -1,4 +1,10 @@
+# Multi page x Single page
 #React
+Automatic UI State Management
+Lightning fast Dom Manipulation
+APIs to Create Truly Composable UIS
+Visuals Defined Entirely in JS
+Just the V in MVC
 Declarative
 Component-Based
 Learn Once, Write Anywhere
