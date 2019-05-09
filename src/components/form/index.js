@@ -25,7 +25,7 @@ const alertForm = (erro) => (
 export default class ModalForm extends Component {
     render() {
         const handleSubmit = (values) => {
-            this.props.save(values)
+            this.props.save({values}, this.props.index)
         }
 
         return (
@@ -55,7 +55,7 @@ export default class ModalForm extends Component {
                                             type='input'
                                             value={values.produto}
                                             name='produto'
-                                            onChange={handleChange}
+                                            onChange={(event) => setFieldValue('produto', event.target.value)}
                                             placeholder='Produto...'
                                         />
                                         <ErrorMessage component="span" name="produto">{(msg) => alertForm(msg)}</ErrorMessage>

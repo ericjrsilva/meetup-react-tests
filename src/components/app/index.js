@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { getProdutos, showModalCadastro, hideModalCadastro, save } from '../../redux/actions'
+import { getProdutos, showModalCadastro, hideModalCadastro, save, excluir } from '../../redux/actions'
 import { connect } from 'react-redux'
-import { Button, Form, Table } from 'react-bootstrap';
+import { Button, Form, Table, CardImg } from 'react-bootstrap';
 import { Formik } from 'formik';
 import ModalForm from '../form'
 
@@ -42,8 +42,12 @@ class App extends Component {
                 <td>{prod.produto}</td>
                 <td>{prod.quantidade}</td>
                 <td>{prod.preco}</td>
-                <td></td>
-                <td></td>
+                <td>
+                  <CardImg title={'Editar'} src={require('./editar.svg')} style={{margin: "auto", width:'21px', cursor:'pointer'}} onClick={() => this.props.showModalCadastro(prod, i)} />
+                </td>
+                <td>
+                  <CardImg title={'Excluir'} src={require('./excluir.svg')} style={{margin: "auto", width:'21px', cursor:'pointer'}} onClick={() => this.props.excluir(prod)} />
+                </td>
               </tr>
             )}
           </tbody>
@@ -52,6 +56,8 @@ class App extends Component {
           isShow={this.props.isShowModalCadastro}
           onHide={this.props.hideModalCadastro}
           save={this.props.save}
+          produto={this.props.produto}
+          index={this.props.index}
         />
       </>
     )
@@ -64,7 +70,9 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   produtos: state.produtos.produtos,
-  isShowModalCadastro: state.produtos.isShowModalCadastro
+  isShowModalCadastro: state.produtos.isShowModalCadastro,
+  produto: state.produtos.produto,
+  index: state.produtos.index
 });
 
-export default connect(mapStateToProps,{getProdutos, showModalCadastro, hideModalCadastro, save})(App);
+export default connect(mapStateToProps,{getProdutos, showModalCadastro, hideModalCadastro, save, excluir})(App);

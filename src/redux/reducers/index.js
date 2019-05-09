@@ -2,7 +2,9 @@ import { combineReducers } from 'redux'
 
 const initialState = {
     produtos: [],
-    isShowModalCadastro: false
+    isShowModalCadastro: false,
+    produto: {},
+    index: null
 };
 
 export default combineReducers({
@@ -16,18 +18,35 @@ export default combineReducers({
             case 'SHOW_MODAL_CADASTRO':
                 return {
                     ...state,
-                    isShowModalCadastro: true
+                    isShowModalCadastro: true,
+                    produto: action.payload.produto,
+                    index: action.payload.index
                 }
             case 'HIDE_MODAL_CADASTRO':
                 return {
                     ...state,
-                    isShowModalCadastro: false
+                    isShowModalCadastro: false,
+                    produto: {}
                 }
             case 'SAVE':
+                var listaAtividades = state.produtos
+
+                if (action.payload.index !== null)
+                    listaAtividades[action.payload.index] = action.payload.produto.values
+                else
+                    listaAtividades = listaAtividades.concat(action.payload.produto.values)
+
                 return {
                     ...state,
-                    produtos: state.produtos.concat(action.payload),
-                    isShowModalCadastro: false
+                    produtos: listaAtividades,
+                    isShowModalCadastro: false,
+                    produto: {},
+                    index: null
+                }
+            case 'EXCLUIR':
+                return {
+                    ...state,
+                    produtos: [...state.produtos.filter(prod => prod !== action.payload)]
                 }
             default:
                 return state;

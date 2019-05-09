@@ -23,10 +23,10 @@ export const getProdutos = () => dispatch => {
     })
 };
 
-export const showModalCadastro = () => dispatch => {
-    console.log('show')
+export const showModalCadastro = (produto = null, index = null) => dispatch => {
     dispatch({
-        type: 'SHOW_MODAL_CADASTRO'
+        type: 'SHOW_MODAL_CADASTRO',
+        payload: {produto, index}
     })
 }
 
@@ -36,9 +36,16 @@ export const hideModalCadastro = () => dispatch => {
     })
 }
 
-export const save = (produto) => dispatch => {
+export const save = (produto, index) => dispatch => {
     dispatch({
         type: 'SAVE',
+        payload: {produto, index}
+    })
+}
+
+export const excluir = (produto) => dispatch => {
+    dispatch({
+        type: 'EXCLUIR',
         payload: produto
     })
 }
