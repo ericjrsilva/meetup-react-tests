@@ -15,7 +15,7 @@ export const getProdutos = () => dispatch => {
         let errorMessage = {};
 
         if (error.response && error.response.data)
-            errorMessage = error.response.data;
+            errorMessage = { message: error.response.data };
         else
             errorMessage = { message: '' };
 
