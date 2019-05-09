@@ -32,7 +32,6 @@ export default function (state = initialState, action) {
                 listaAtividades[action.payload.index] = action.payload.produto.values
             else
                 listaAtividades = listaAtividades.concat(action.payload.produto.values)
-
             return {
                 ...state,
                 produtos: listaAtividades,
@@ -40,7 +39,7 @@ export default function (state = initialState, action) {
                 produto: {},
                 index: null
             }
-        case 'EXCLUIR':
+        case 'EXCLUIR':            
             return {
                 ...state,
                 produtos: [...state.produtos.filter(prod => prod !== action.payload)]
