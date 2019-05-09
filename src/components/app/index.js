@@ -5,7 +5,7 @@ import { getProdutos, showModalCadastro, hideModalCadastro, save, excluir } from
 import { connect } from 'react-redux'
 import { Button, Form, Table, CardImg } from 'react-bootstrap';
 import { Formik } from 'formik';
-import ModalForm from '../form'
+import ModalForm from '../form';
 
 class App extends Component {
   render() {
