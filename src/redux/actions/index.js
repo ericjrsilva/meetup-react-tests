@@ -19,7 +19,7 @@ export const getProdutos = () => dispatch => {
         else
             errorMessage = { message: '' };
 
-        console.log(errorMessage.message)
+        // console.log(errorMessage.message)
     })
 };
 
