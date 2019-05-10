@@ -17,6 +17,17 @@ describe('should test ProdutoReducer', ()=>{
         expect(produtoReducer(initialState, action)).toEqual(expectedState)
     })
 
+    // it('should handle SHOW_MODAL_CADASTRO', () => {
+    //     const expectedState = {
+    //         ...initialState,
+    //         isShowModalCadastro: true,
+    //         produto: null,
+    //         index: null
+    //     } 
+    //     const action = {type: 'SHOW_MODAL_CADASTRO', payload:{produto:null,index:null}}
+    //     expect(produtoReducer(initialState, action)).toEqual(expectedState)
+    // })
+
     // it('should handle HIDE_MODAL_CADASTRO', ()=>{
   
     //     const action = {type: 'HIDE_MODAL_CADASTRO'}
@@ -39,29 +50,6 @@ describe('should test ProdutoReducer', ()=>{
     //     const expectedState = {...initialState, produtos: produtosMock}
 
     //     expect(produtoReducer(stateToReceive, action)).toEqual(expectedState)
-    // })
-
-    // it('should handle SHOW_MODAL_CADASTRO | new product', () => {
-    //     const expectedState = {
-    //         ...initialState,
-    //         isShowModalCadastro: true,
-    //         produto: null,
-    //         index: null
-    //     } 
-    //     const action = {type: 'SHOW_MODAL_CADASTRO', payload:{produto:null,index:null}}
-    //     expect(produtoReducer(initialState, action)).toEqual(expectedState)
-    // })
-
-    // it('should handle SHOW_MODAL_CADASTRO | edit product', () => {
-    //     const mock = produto
-    //     const expectedState = {
-    //         ...initialState,
-    //         isShowModalCadastro: true,
-    //         produto:mock,
-    //         index: 1
-    //     } 
-    //     const action = {type: 'SHOW_MODAL_CADASTRO', payload:{produto:mock, index: 1}}
-    //     expect(produtoReducer(initialState, action)).toEqual(expectedState)
     // })
 
     // it('should handle SAVE and create new product', ()=>{
