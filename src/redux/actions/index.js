@@ -11,16 +11,7 @@ export const getProdutos = () => dispatch => {
             payload: response.data
         })
     )
-    .catch(error => {
-        let errorMessage = {};
-
-        if (error.response && error.response.data)
-            errorMessage = { message: error.response.data };
-        else
-            errorMessage = { message: '' };
-
-        // console.log(errorMessage.message)
-    })
+    .catch(() => {})
 };
 
 export const showModalCadastro = (produto = null, index = null) => dispatch => {
