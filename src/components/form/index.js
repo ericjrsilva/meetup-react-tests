@@ -29,7 +29,7 @@ export default class ModalForm extends Component {
         }
 
         return (
-            <Modal show={this.props.isShow} onHide={() => this.props.onHide()}>
+            <Modal show={this.props.isShow} onHide={() => this.props.onHide()} data-test='modalForm'>
                 <Modal.Header closeButton>
                     <p>Cadastro de produto</p>
                 </Modal.Header>
@@ -42,6 +42,7 @@ export default class ModalForm extends Component {
                             quantidade: this.props.produto ? this.props.produto.quantidade : '',
                             preco: this.props.produto ? this.props.produto.preco : ''
                         }}
+                        data-test='form'
                     >
                         {({
                             handleSubmit,
@@ -55,10 +56,10 @@ export default class ModalForm extends Component {
                                             type='input'
                                             value={values.produto}
                                             name='produto'
-                                            onChange={(event) => setFieldValue('produto', event.target.value)}
+                                            onChange={handleChange}
                                             placeholder='Produto...'
                                         />
-                                        <ErrorMessage component="span" name="produto">{(msg) => alertForm(msg)}</ErrorMessage>
+                                        <ErrorMessage component="span" name="produto" data-test='ErrorMessageProduto'>{(msg) => alertForm(msg)}</ErrorMessage>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Control
