@@ -7,10 +7,10 @@ import { Button, Form, Table, CardImg } from 'react-bootstrap';
 import { Formik } from 'formik';
 import ModalForm from '../form';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return(
-      <>
+      <div style={{margin: '20px'}}>
         <Formik onSubmit={this.props.getProdutos} >
           {({
             handleSubmit,
@@ -20,13 +20,14 @@ class App extends Component {
                 <Form.Control
                   name="produto"
                   type="input"
-                  onChange={handleChange} />
-                <Button type='submit'>CONSULTAR</Button>
+                  onChange={handleChange}
+                  style={{width:'500px'}}/>
+                <Button type='submit' style={{margin: '10px'}}>CONSULTAR</Button>
                 <Button onClick={() => this.props.showModalCadastro()}>NOVO</Button>
               </Form>
           )}
         </Formik>
-        <Table striped bordered hover>
+        <Table striped bordered hover style={{marginTop: '20px'}}>
           <thead>
             <tr>
               <th>Produto</th>
@@ -59,7 +60,7 @@ class App extends Component {
           produto={this.props.produto}
           index={this.props.index}
         />
-      </>
+      </div>
     )
   }
 };
