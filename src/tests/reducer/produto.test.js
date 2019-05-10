@@ -18,13 +18,14 @@ describe('should test ProdutoReducer', ()=>{
     })
 
     // it('should handle HIDE_MODAL_CADASTRO', ()=>{
-    //     const returnReducer = {
-    //         ...initialState,
-    //         isShowModalCadastro: false,
-    //         produto: {}
-    //     }
+  
     //     const action = {type: 'HIDE_MODAL_CADASTRO'}
-    //     const expectedState = {...initialState, ...returnReducer }
+        
+    //     const expectedState = {
+    //         ...initialState, 
+    //         isShowModalCadastro: false,
+    //         produto: {} 
+    //     }
     //     expect(produtoReducer(initialState, action)).toEqual(expectedState)
         
     // })
