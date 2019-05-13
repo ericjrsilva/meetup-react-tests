@@ -1,6 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import Main from '../../main'
 import { App } from '../../components/app'
 import { shallow, mount } from 'enzyme'
 
@@ -8,7 +6,7 @@ const setUpShallow = (props={}) => {
     return shallow(<App {...props} />)
 }
 
-export const findByTestAttr = (component, attr) => {
+const findByTestAttr = (component, attr) => {
     return component.find(`[data-test='${attr}']`)
 }
 
@@ -38,18 +36,18 @@ describe('App shallow', () => {
         expect(wrapper).toBeDefined()
     })
 
-    it('should consult', async () => {
+    it('should submit', () => {
         var form = findByTestAttr(wrapper, 'form')
         form.simulate('submit')
         expect(funcSubmit).toBeCalled()
     })
 
-    it('should show consult result', async () => {
+    it('should show consult result', () => {
         wrapper.setProps({produtos: [{produto: 'prod 1', quantidade: 1, preco: 1}, {produto: 'prod 2', quantidade: 2, preco: 2}]})
         var linhas = findByTestAttr(wrapper, 'linha_tabela')
         expect(linhas.length).toEqual(2)
-        expect(linhas.first().find('td').first().contains('prod 1')).toBeTruly
-        expect(linhas.at(2).find('td').first().contains('prod 2')).toBeTruly
+        expect(linhas.first().find('td').first().contains('prod 1')).toBe(true)
+        expect(linhas.at(1).find('td').first().contains('prod 2')).toBe(true)
     })
 })
 
@@ -80,13 +78,13 @@ describe('App mount', () => {
     })
 
     describe('Show modal', () => {
-        it('should call showModal ao cadastrar', async () => {
+        it('should call showModal ao cadastrar', () => {
             var btnNovo = findByTestAttr(wrapper, 'botao_novo')
             btnNovo.first().simulate('click')
             expect(funcShowModal).toBeCalled()
         })
 
-        it('should call showModal ao editar', async () => {
+        it('should call showModal ao editar', () => {
             wrapper.setProps({produtos: [{produto: 'teste', quantidade: 1, preco: 1}]})
             var btnEditar = findByTestAttr(wrapper, 'botao_editar')
             btnEditar.first().simulate('click')
@@ -94,7 +92,7 @@ describe('App mount', () => {
         })
     })
 
-    it('should call excluir ao deletar', async () => {
+    it('should call excluir ao deletar', () => {
         wrapper.setProps({produtos: [{produto: 'teste', quantidade: 1, preco: 1}]})
         var btnEditar = findByTestAttr(wrapper, 'botao_excluir')
         btnEditar.first().simulate('click')

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import { getProdutos, showModalCadastro, hideModalCadastro, save, excluir } from '../../redux/actions'
 import { connect } from 'react-redux'
@@ -11,7 +10,7 @@ export class App extends Component {
   render() {
     return(
       <div style={{margin: '20px'}}>
-        <Formik onSubmit={this.props.getProdutos} data-test='form' >
+        <Formik onSubmit={this.props.getProdutos} data-test='form'>
           {({
             handleSubmit,
             handleChange
@@ -22,7 +21,7 @@ export class App extends Component {
                   type="input"
                   onChange={handleChange}
                   style={{width:'500px'}}/>
-                <Button type='submit' style={{margin: '10px'}} data-test='botao_consultar'>CONSULTAR</Button>
+                <Button type='submit' style={{margin: '10px'}}>CONSULTAR</Button>
                 <Button onClick={() => this.props.showModalCadastro()} data-test='botao_novo'>NOVO</Button>
               </Form>
           )}
@@ -44,7 +43,7 @@ export class App extends Component {
                 <td>{prod.quantidade}</td>
                 <td>{prod.preco}</td>
                 <td>
-                  <CardImg title={'Editar'} src={require('./editar.svg')} style={{margin: "auto", width:'21px', cursor:'pointer'}} onClick={() => this.props.showModalCadastro(prod, i)} data-test='botao_editar' />
+                  <CardImg title={'Editar'} src={require('./editar.svg')} style={{margin: "auto", width:'21px', cursor:'pointer'}} onClick={() => this.props.showModalCadastro(prod, i)} data-test='botao_editar'/>
                 </td>
                 <td>
                   <CardImg title={'Excluir'} src={require('./excluir.svg')} style={{margin: "auto", width:'21px', cursor:'pointer'}} onClick={() => this.props.excluir(prod)} data-test='botao_excluir' />
@@ -59,7 +58,6 @@ export class App extends Component {
           save={this.props.save}
           produto={this.props.produto}
           index={this.props.index}
-          data-test='modalForm'
         />
       </div>
     )

@@ -17,66 +17,64 @@ describe('should test ProdutoReducer', ()=>{
         expect(produtoReducer(initialState, action)).toEqual(expectedState)
     })
 
-    // it('should handle SHOW_MODAL_CADASTRO', () => {
-    //     const expectedState = {
-    //         ...initialState,
-    //         isShowModalCadastro: true,
-    //         produto: null,
-    //         index: null
-    //     } 
-    //     const action = {type: 'SHOW_MODAL_CADASTRO', payload:{produto:null,index:null}}
-    //     expect(produtoReducer(initialState, action)).toEqual(expectedState)
-    // })
+    it('should handle SHOW_MODAL_CADASTRO', () => {
+        const expectedState = {
+            ...initialState,
+            isShowModalCadastro: true,
+            produto: null,
+            index: null
+        } 
+        const action = {type: 'SHOW_MODAL_CADASTRO', payload:{produto:null,index:null}}
+        expect(produtoReducer(initialState, action)).toEqual(expectedState)
+    })
 
-    // it('should handle HIDE_MODAL_CADASTRO', ()=>{
-  
-    //     const action = {type: 'HIDE_MODAL_CADASTRO'}
-        
-    //     const expectedState = {
-    //         ...initialState, 
-    //         isShowModalCadastro: false,
-    //         produto: {} 
-    //     }
-    //     expect(produtoReducer(initialState, action)).toEqual(expectedState)
-        
-    // })
+    it('should handle HIDE_MODAL_CADASTRO', ()=>{
+        const action = {type: 'HIDE_MODAL_CADASTRO'}
 
-    // it('should handle EXCLUIR',()=>{
-    //     const mock = produto
-    //     const stateToReceive = {...initialState, produtos: produtosMock.concat(mock)}
+        const expectedState = {
+            ...initialState,
+            isShowModalCadastro: false,
+            produto: {} 
+        }
+        expect(produtoReducer(initialState, action)).toEqual(expectedState)
+    })
 
-    //     const payload = mock
-    //     const action = {type: 'EXCLUIR', payload}
-    //     const expectedState = {...initialState, produtos: produtosMock}
+    it('should handle EXCLUIR',()=>{
+        const mock = produto
+        const stateToReceive = {...initialState, produtos: produtosMock.concat(mock)}
 
-    //     expect(produtoReducer(stateToReceive, action)).toEqual(expectedState)
-    // })
+        const payload = mock
+        const action = {type: 'EXCLUIR', payload}
+        const expectedState = {...initialState, produtos: produtosMock}
 
-    // it('should handle SAVE and create new product', ()=>{
-    //     const stateToReceive = {...initialState, produtos:produtosMock}
-    //     const mock = produto
+        expect(produtoReducer(stateToReceive, action)).toEqual(expectedState)
+    })
 
-    //     const expectedState = {
-    //         produtos: produtosMock.concat(mock),
-    //         isShowModalCadastro: false,
-    //         produto: {},
-    //         index: null
-    //     }
-    //     const action = {type: 'SAVE', payload:{produto:{values:mock}, index: null}}
-    //     expect(produtoReducer(stateToReceive, action)).toEqual(expectedState)
-    // })
+    it('should handle SAVE and create new product', ()=>{
+        const stateToReceive = {...initialState, produtos:produtosMock}
+        const mock = produto
 
-    // it('should handle SAVE and edit product', ()=>{
-    //     const stateToReceive = {...initialState, produtos:produtosMock}
-    //     const mock = produto
+        const expectedState = {
+            produtos: produtosMock.concat(mock),
+            isShowModalCadastro: false,
+            produto: {},
+            index: null
+        }
+        const action = {type: 'SAVE', payload:{produto:{values:mock}, index: null}}
+        expect(produtoReducer(stateToReceive, action)).toEqual(expectedState)
+    })
 
-    //     const expectedState = {
-    //         produtos: [mock,produtosMock[1]],
-    //         isShowModalCadastro: false,
-    //         produto: {},
-    //         index: null
-    //     }
-    //     const action = {type: 'SAVE', payload:{produto:{values:mock}, index: 0}}
-    //     expect(produtoReducer(stateToReceive, action)).toEqual(expectedState)
-    // })
+    it('should handle SAVE and edit product', ()=>{
+        const stateToReceive = {...initialState, produtos:produtosMock}
+        const mock = produto
+
+        const expectedState = {
+            produtos: [mock,produtosMock[1]],
+            isShowModalCadastro: false,
+            produto: {},
+            index: null
+        }
+        const action = {type: 'SAVE', payload:{produto:{values:mock}, index: 0}}
+        expect(produtoReducer(stateToReceive, action)).toEqual(expectedState)
+    })
 })

@@ -29,7 +29,7 @@ export default class ModalForm extends Component {
         }
 
         return (
-            <Modal show={this.props.isShow} onHide={() => this.props.onHide()} data-test='modalForm'>
+            <Modal show={this.props.isShow} onHide={() => this.props.onHide()}>
                 <Modal.Header closeButton>
                     <p>Cadastro de produto</p>
                 </Modal.Header>

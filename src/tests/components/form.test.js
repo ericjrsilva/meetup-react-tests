@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import ModalForm from '../../components/form'
-import { prototype } from 'stream';
 
 const setUp = (props={}) => {
   return shallow(<ModalForm {...props} />)
@@ -41,7 +40,7 @@ describe('ModalForm', () => {
     it('should show validation', async () => {
         wrapper = mount(<ModalForm {...props} />)
         const form = findByTestAttr(wrapper, 'form')
-        form.simulate('submit')
+        form.simulate('submit') 
         await new Promise(resolve => setTimeout(resolve, 0));
         wrapper.update();
         const erros = findByTestAttr(wrapper, 'ErrorMessageProduto')
@@ -64,10 +63,12 @@ describe('ModalForm', () => {
         await new Promise(resolve => setTimeout(resolve, 0))
         expect(funcSalvar).toBeCalled()
 
+        // Testando os valores campo a campo
         expect(funcSalvar.mock.calls[0][0].values.produto).toBe('produto1')
         expect(funcSalvar.mock.calls[0][0].values.quantidade).toBe(10)
         expect(funcSalvar.mock.calls[0][0].values.preco).toBe(20)
 
+        // Testando todo o objeto
         expect(funcSalvar.mock.calls[0][0].values).toEqual(props.produto)
     })
 })
